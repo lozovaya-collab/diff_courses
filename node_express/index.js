@@ -17,11 +17,11 @@ app.use(serverRoutes)
 
 // работаем с шаблонизатором ejs
 app.get("/", (req, res) => {
-    res.render("index", { title: "Main Page" })
+    res.render("index", { title: "Main Page", active: "main" })
 })
 
 app.get("/features", (req, res) => {
-    res.render("features", { title: "Features Page" })
+    res.render("features", { title: "Features Page", active: "features" })
 })
 
 app.listen(3000)
