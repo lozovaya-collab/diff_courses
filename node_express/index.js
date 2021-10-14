@@ -11,7 +11,15 @@ app.set("views", path.resolve(__dirname, "ejs"))
 
 const PORT = process.env.PORT || 3000
 
-app.use(requestTime) // регистрируем
+app.use(express.static(path.resolve(__dirname, "static")))
+
+// научим приложение общаться с json
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
+
+// регистрируем
+app.use(requestTime)
 app.use(logger)
 app.use(serverRoutes)
 
