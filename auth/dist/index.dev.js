@@ -18,12 +18,18 @@ var start = function start() {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          mongoose.connect(uri);
+          _context.next = 2;
+          return regeneratorRuntime.awrap(mongoose.connect(uri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+          }).then(console.log('aaaa')));
+
+        case 2:
           app.listen(PORT, function () {
             return console.log("server started on PORT ".concat(PORT));
           });
 
-        case 2:
+        case 3:
         case "end":
           return _context.stop();
       }
