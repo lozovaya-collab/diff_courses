@@ -4,7 +4,7 @@
     <hr />
     <div class="form-adding_content">
       <v-text-field v-model="name" label="Name" hide-details="auto"></v-text-field>
-      <button type="submit" @click="addNewUser()">Add</button>
+      <button type="submit" @click="addNewUser(name)">Add</button>
     </div>
   </div>
 </template>

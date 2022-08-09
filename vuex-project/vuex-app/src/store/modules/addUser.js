@@ -8,16 +8,12 @@ export default {
         },
     },
     mutations: {
-        add(state) {
-            this.dispatch('addToSystem', state.nameNewUser);
+        clearInput(state) {
             state.nameNewUser = '';
         },
     },
     actions: {
-        addNewUser({ commit }) {
-            commit('add')
-        },
-        addToSystem({ rootState }, name) {
+        addNewUser({ commit, rootState }, name) {
             const newUser = {
                 id: rootState.newUser.users.length,
                 name,
@@ -25,7 +21,8 @@ export default {
             }
 
             rootState.newUser.users.push(newUser)
-        }
+            commit('clearInput')
+        },
     },
 
 }
