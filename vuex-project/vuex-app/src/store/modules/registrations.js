@@ -11,16 +11,20 @@ export default {
         },
     },
     mutations: {
-        register(context, userInfo) {
-            console.log(context, userInfo)
-                // const user = state.users.find(item => item.id == userInfo.id);
-                // user.registered = true;
+        unregister(state, user) {
+            this.dispatch('deleteRegistartion', user);
+
+            const index = state.registrations.findIndex(item => item.id == user.id);
+            state.registrations.splice(index, 1);
         },
     },
     actions: {
-        registerUser({ commit }, user) {
-            commit('register', user)
-        }
+        unregisterUser({ commit }, user) {
+            commit('unregister', user)
+        },
+        deleteRegistartion({ rootState }, user) {
+            rootState.newUser.users.find(item => item.id == user.id).registered = false;
+        },
     },
 
 }

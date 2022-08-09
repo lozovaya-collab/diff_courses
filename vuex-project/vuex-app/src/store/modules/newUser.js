@@ -24,19 +24,21 @@ export default {
         }
     },
     mutations: {
-        register(context, userInfo) {
-            console.log(context)
-            const user = context.state.users.find(item => item.id == userInfo.id);
+        register(state, userInfo) {
+            const user = state.users.find(item => item.id == userInfo.id);
             user.registered = true;
 
             const registratedUser = Object.assign({}, user);
+            this.dispatch('addUser', registratedUser)
 
-            context.state.registrations.push(registratedUser);
-        },
+        }
     },
     actions: {
         registerUser({ commit }, user) {
             commit('register', user)
+        },
+        addUser({ rootState }, user) {
+            rootState.registrations.registrations.push(user);
         }
     },
 
